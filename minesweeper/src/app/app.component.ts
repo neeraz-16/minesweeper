@@ -20,16 +20,24 @@ export class AppComponent implements OnInit {
   bomb:number=10;
   totalMoves:number=0
   
-  newSize: number=0;
-  newBomb:number=0;
+  newSize: number=10;
+  newBomb:number=10;
   restartGame() {
     if (this.newSize && this.newSize > 0&&this.newBomb&&this.newBomb>0) {
       this.size = this.newSize;
       this.bomb=this.newBomb;
       if(this.bomb<=this.size*this.size)this.startGame();
+      else{
+        alert("Bombs cant be more the the total cells of the table");
+      }
+    }
+    else{
+      alert("Please Provide the correct details");
     }
   }
-
+  startAgainGame() {
+    this.startGame();
+  }
   constructor(private formBuilder: FormBuilder) {
   this.startGame();
   }
@@ -55,14 +63,6 @@ export class AppComponent implements OnInit {
     this.isSeen = Array(n).fill([]).map(() => Array(n).fill(1));
     this.rows = Array(n).fill([]).map((_, i) => Array(n).fill(i));
     
-    // this.rows=[];
-    // for (let i = 1; i <= this.size; i++) {
-    //   const row: number[] = [];
-    //   for (let j = 1; j <= this.size; j++) {
-    //     row.push(i * j);
-    //   }
-    //   this.rows.push(row);
-    // }
 
     let count;
     count =0;

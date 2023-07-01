@@ -1,23 +1,49 @@
-<div  id="table-container">
-  <div id="timer">
-    Time:{{Time}}
+<div id="back-ground">
+  <div id="time-move">
+    <div>
+      Time:{{Time}}
+    </div>
+    <div>
+      Total moves:{{totalMoves}}
+    </div>
+  </div>
+  <div id="new-size">
+    <div>
+    Table size&nbsp;&nbsp;
+    <input type="number" [(ngModel)]="newSize" placeholder="Enter new size" />
   </div>
   <div>
-    total moves:{{totalMoves}}
+    &nbsp;
   </div>
-  <table class="my-table">
-    <!-- <tbody> -->
-    <tr *ngFor="let row of rows;let i = index">
-        <td   id="box-size" type="button" *ngFor="let cell of row;let j = index" (click)="checkMine(i,j)"(contextmenu)="onRightClick(i,j,$event)">
+  <div>
+    Total bomb
+    <input type="number" [(ngModel)]="newBomb" placeholder=" Enter total bomb" />
+  </div>
+  <div>
+    &nbsp;
+  </div>
+  <div>
+    <button (click)="restartGame()" > Start </button>
+  </div>
+  </div>
+  <div class="my-table">
+    <table>
+      <tr *ngFor="let row of rows;let i = index">
+        <td id="box-size" type="button" *ngFor="let cell of row;let j = index" (click)="checkMine(i,j)"
+          (contextmenu)="onRightClick(i,j,$event)">
           <div *ngIf="isSeen[i][j]==1"></div>
-          <div *ngIf="isSeen[i][j]==0"id="text-center">{{rows[i][j]}}</div>
-          <div *ngIf="isSeen[i][j]==-1"id="flag-box"></div>
+          <div *ngIf="isSeen[i][j]==0" id="text-center">{{rows[i][j]}}</div>
+          <div *ngIf="isSeen[i][j]==-1" id="flag-box"></div>
         </td>
-    </tr>
-  <!-- </tbody> -->
-  </table>
-  <input type="number" [(ngModel)]="newSize" placeholder="Enter new size" />
-  <input type="number" [(ngModel)]="newBomb" placeholder="Enter total bomb" />
-  <button (click)="restartGame()"> Restart </button>
-  <div *ngIf="win==1">Congratulations</div>
+      </tr>
+    </table>
+  </div>
+  <div *ngIf="win==1" id="myModal">
+  <h1 class="congratulations">
+    Congratulations
+  </h1>
+  </div>
+  <div id="restart">
+    <button (click)="startAgainGame()"> Restart </button>
+  </div>
 </div>
