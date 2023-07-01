@@ -1,0 +1,70 @@
+  
+#table-container {
+  display:flex;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height based on your requirements */
+  background-color: rgb(8, 213, 213);
+}
+#timer{
+  margin: 2%;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  color: #c22727;
+}
+
+.my-table {
+  border-collapse: collapse;
+}
+
+.my-table th,
+.my-table td {
+  border: 1px solid black;
+  padding: 0px;
+}
+
+.background{
+  background-color: rgb(12, 99, 99);
+}
+#text-center{
+  text-align: center;
+}
+#box-size{
+    width: 50px;
+    height: 50px;
+    
+}
+#flag-box{
+  width: 50px;
+  height: 50px;
+  /* color: #dd1818; */
+  background-color: #dd1818;
+}
+
+
+.flower-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flower {
+  position: absolute;
+  top: -20px;
+  left: calc(50% - 10px);
+  animation: rain 3s linear infinite;
+}
+
+@keyframes rain {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}

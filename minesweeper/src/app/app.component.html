@@ -1,0 +1,23 @@
+<div  id="table-container">
+  <div id="timer">
+    Time:{{Time}}
+  </div>
+  <div>
+    total moves:{{totalMoves}}
+  </div>
+  <table class="my-table">
+    <!-- <tbody> -->
+    <tr *ngFor="let row of rows;let i = index">
+        <td   id="box-size" type="button" *ngFor="let cell of row;let j = index" (click)="checkMine(i,j)"(contextmenu)="onRightClick(i,j,$event)">
+          <div *ngIf="isSeen[i][j]==1"></div>
+          <div *ngIf="isSeen[i][j]==0"id="text-center">{{rows[i][j]}}</div>
+          <div *ngIf="isSeen[i][j]==-1"id="flag-box"></div>
+        </td>
+    </tr>
+  <!-- </tbody> -->
+  </table>
+  <input type="number" [(ngModel)]="newSize" placeholder="Enter new size" />
+  <input type="number" [(ngModel)]="newBomb" placeholder="Enter total bomb" />
+  <button (click)="restartGame()"> Restart </button>
+  <div *ngIf="win==1">Congratulations</div>
+</div>
